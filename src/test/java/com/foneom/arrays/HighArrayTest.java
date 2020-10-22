@@ -30,7 +30,44 @@ public class HighArrayTest {
         arr.insert(1);
         arr.insert(2);
         arr.delete(1);
-        int[] expected = new int[] {2, 0, 0};
-        assertThat(expected, is(arr.getArray()));
+        int[] actual = new int[] {2, 0, 0};
+        assertThat(actual, is(arr.getArray()));
+    }
+
+    @Test
+    public void whenIsNotElementForDelete() {
+        HighArray arr = new HighArray(3);
+        arr.insert(1);
+        arr.insert(2);
+        boolean expected = arr.delete(5);
+        assertThat(false, is(expected));
+    }
+
+    @Test
+    public void whenRemoveElementIsTrue() {
+        HighArray arr = new HighArray(3);
+        arr.insert(1);
+        arr.insert(2);
+        arr.remove(1);
+        int[] actual = new int[] {1, 0, 0};
+        assertThat(actual, is(arr.getArray()));
+    }
+
+    @Test
+    public void whenSearchIsTrue() {
+        HighArray arr = new HighArray(5);
+        arr.insert(1);
+        arr.insert(2);
+        boolean expected = arr.lineSearch(2);
+        assertThat(true, is(expected));
+    }
+
+    @Test
+    public void whenSearchIsFalse() {
+        HighArray arr = new HighArray(5);
+        arr.insert(1);
+        arr.insert(2);
+        boolean expected = arr.lineSearch(3);
+        assertThat(false, is(expected));
     }
 }
