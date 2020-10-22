@@ -12,6 +12,7 @@ public class HighArray {
 
     /**
      * Конструктор
+     *
      * @param maxSize - максимальное количество элементов в массиве
      */
     public HighArray(int maxSize) {
@@ -21,11 +22,16 @@ public class HighArray {
 
     /**
      * Метод вставки значения в массив
+     *
      * @param value
      */
     public void insert(int value) {
         arr[nElem] = value;
         nElem++;
+    }
+
+    public int[] getArr() {
+        return arr;
     }
 
     public int getNElem() {
@@ -34,10 +40,11 @@ public class HighArray {
 
     /**
      * Метод поиска элемента в массиве
+     *
      * @param key
      * @return
      */
-    public boolean search(int key) {
+    public boolean LineSearch(int key) {
         boolean isSearched = false;
         for (int i = 0; i < nElem; i++) {
             if (arr[i] == key) {
@@ -48,6 +55,34 @@ public class HighArray {
             }
         }
         return isSearched;
+    }
+
+    /**
+     * Метод удаления элемента по ключу
+     *
+     * @param key
+     * @return
+     */
+    public boolean deleteByKey(int key) {
+        boolean isDeleted = false;
+        int i;
+        for (i = 0; i < nElem; i++) {
+            if (arr[i] == key) {
+                break;
+            }
+        }
+        if (i != nElem) {
+            for (int k = i; k < nElem; k++) {
+                arr[k] = arr[k + 1];
+            }
+                nElem--;
+                isDeleted = true;
+        }
+        return isDeleted;
+    }
+
+    public void remove(int index) {
+        System.arraycopy(arr, index + 1, arr, index, arr.length - 1 - index);
     }
 
     /**
