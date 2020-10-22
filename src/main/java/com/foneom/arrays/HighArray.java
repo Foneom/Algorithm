@@ -50,6 +50,13 @@ public class HighArray {
         return isSearched;
     }
 
+    public int[] getArray() {
+        for (int i = 0; i < nElem; i++) {
+
+        }
+            return arr;
+    }
+
     /**
      * Метод вывода массива на печать
      */
@@ -62,5 +69,23 @@ public class HighArray {
             System.out.print(arr[i]);
         }
         System.out.print("]");
+    }
+
+    public boolean delete(int key) {
+        boolean isDeleted = false;
+        int i;
+        for (i = 0; i < arr.length; i++) {
+            if (arr[i] == key) {
+                break;
+            }
+            if (i == nElem) {
+            }
+        }
+            for (int k = i; k < nElem; k++) {
+                    arr[k] = arr[k + 1];
+                    nElem--;
+                    isDeleted = true;
+            }
+            return isDeleted;
     }
 }

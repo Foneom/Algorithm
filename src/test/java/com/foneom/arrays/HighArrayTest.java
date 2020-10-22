@@ -2,6 +2,7 @@ package com.foneom.arrays;
 
 import org.junit.Test;
 
+import static org.hamcrest.CoreMatchers.is;
 import static org.junit.Assert.*;
 
 public class HighArrayTest {
@@ -21,5 +22,15 @@ public class HighArrayTest {
         arr.insert(1);
         arr.insert(2);
         assertEquals(2, arr.getNElem());
+    }
+
+    @Test
+    public void isDeleteTrue() {
+        HighArray arr = new HighArray(3);
+        arr.insert(1);
+        arr.insert(2);
+        arr.delete(1);
+        int[] expected = new int[] {2, 0, 0};
+        assertThat(expected, is(arr.getArray()));
     }
 }
