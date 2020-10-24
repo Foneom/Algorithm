@@ -118,7 +118,7 @@ public class HighArray {
         }
     }
 
-    public boolean binarySearch(int key) {
+        public boolean binarySearch(int key) {
         int low = 0;
         int high = nElem - 1;
         boolean isSearched = false;

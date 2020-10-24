@@ -8,7 +8,8 @@ import static org.hamcrest.CoreMatchers.is;
 import static org.junit.Assert.*;
 
 public class HighArrayTest {
-    /**л
+    /**
+     * л
      * Тест проверки метода линейного поиска в неотсортированном массиве
      */
     @Test
@@ -29,7 +30,7 @@ public class HighArrayTest {
         arr.insert(1);
         arr.insert(2);
         int[] actual = arr.getArr();
-        int[] expected = new int[] {1, 2, 0};
+        int[] expected = new int[]{1, 2, 0};
         assertThat(actual, is(expected));
     }
 
@@ -41,7 +42,7 @@ public class HighArrayTest {
         arr.insert(3);
         arr.remove(1);
         int[] actual = arr.getArr();
-        int[] expected = new int[] {2, 3, 0, 0};
+        int[] expected = new int[]{2, 3, 0, 0};
         assertThat(expected, is(actual));
     }
 
@@ -53,7 +54,7 @@ public class HighArrayTest {
         arr.insert(3);
         arr.deleteByKey(2);
         int[] actual = arr.getArr();
-        int[] expected = new int[] {1, 3, 0, 0};
+        int[] expected = new int[]{1, 3, 0, 0};
         assertThat(expected, is(actual));
     }
 
@@ -68,7 +69,7 @@ public class HighArrayTest {
         arr.insert(3);
         arr.bubbleSort();
         int[] actual = arr.getArr();
-        int[] expected = new int[] {1, 2, 3};
+        int[] expected = new int[]{1, 2, 3};
         assertThat(expected, is(actual));
     }
 }
