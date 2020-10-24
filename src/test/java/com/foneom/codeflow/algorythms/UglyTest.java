@@ -1,6 +1,7 @@
 package com.foneom.codeflow.algorythms;
 
 import org.junit.Test;
+
 import static org.junit.Assert.*;
 
 public class UglyTest {

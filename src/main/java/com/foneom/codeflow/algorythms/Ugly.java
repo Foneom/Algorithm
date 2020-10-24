@@ -7,13 +7,13 @@ public class Ugly {
         char[] text = str.toCharArray();
         for (int i = 0; i < text.length; i++) {
             char c = str.charAt(i);
-    if (i%2 != 0) {
+            if (i % 2 != 0) {
                 text[i] = Character.toLowerCase(c);
-            } else if (i%2 == 0) {
+            } else if (i % 2 == 0) {
                 text[i] = Character.toUpperCase(c);
-            } else if (i%2 != 0) {
-        text[i] = Character.toLowerCase(c);
-    }
+            } else if (i % 2 != 0) {
+                text[i] = Character.toLowerCase(c);
+            }
         }
         return new String(text);
     }
