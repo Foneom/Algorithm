@@ -72,4 +72,15 @@ public class HighArrayTest {
         int[] expected = new int[]{1, 2, 3};
         assertThat(expected, is(actual));
     }
+
+    @Test
+    public void isBubbleSearchTrue() {
+        HighArray arr = new HighArray(3);
+        arr.insert(1);
+        arr.insert(2);
+        arr.insert(3);
+
+        boolean expected = arr.binarySearch(3);
+        assertThat(true, is(expected));
+    }
 }
