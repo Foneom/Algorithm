@@ -79,6 +79,8 @@ public class HighArray {
             }
             nElem--;
             isDeleted = true;
+                nElem--;
+                isDeleted = true;
         }
         return isDeleted;
     }

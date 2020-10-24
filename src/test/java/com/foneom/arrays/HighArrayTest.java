@@ -2,14 +2,14 @@ package com.foneom.arrays;
 
 import org.junit.Test;
 
-import java.util.Arrays;
+
 
 import static org.hamcrest.CoreMatchers.is;
 import static org.junit.Assert.*;
 
 public class HighArrayTest {
+
     /**
-     * л
      * Тест проверки метода линейного поиска в неотсортированном массиве
      */
     @Test
