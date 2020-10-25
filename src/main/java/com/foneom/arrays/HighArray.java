@@ -125,7 +125,7 @@ public class HighArray {
         int high = nElem - 1;
         boolean isSearched = false;
 
-        while (true) {
+        while (low <= high) {
             int mid = (low + high) / 2;
             if (arr[mid] == key) {
                 isSearched = true;

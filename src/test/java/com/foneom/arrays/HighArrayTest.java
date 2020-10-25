@@ -79,8 +79,7 @@ public class HighArrayTest {
         arr.insert(1);
         arr.insert(2);
         arr.insert(3);
-
-        boolean expected = arr.binarySearch(3);
-        assertThat(true, is(expected));
+        assertThat(true, is(arr.binarySearch(3)));
+        assertThat(false, is(arr.binarySearch(6)));
     }
 }
