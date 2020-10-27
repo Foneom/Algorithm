@@ -1,6 +1,7 @@
 package com.foneom.tracker;
 
 import java.util.Arrays;
+import java.util.UUID;
 
 public class Tracker {
     /**
@@ -8,33 +9,59 @@ public class Tracker {
      */
     private final Item[] items = new Item[100];
 
-    private int ids = 1;
     /**
      * Фактическое количество элементов
      */
     private int size = 0;
 
+
+    /**
+     * Метод возвращает фактическое число заявок в контейнере на текущий момент
+     *
+     * @return
+     */
+    public int getSize() {
+        return size;
+    }
+
+    private int indexOf(String id) {
+        int index = -1;
+        for (int i = 0; i < size; i++) {
+            if (items[i].getId().equals(id)) {
+                index = i;
+                break;
+            }
+        }
+        return index;
+    }
+
+
+    public String getIdByItem(Item item) {
+        return String.valueOf(item.getId());
+    }
+
     /**
      * Метод добавления заявок в хранилище
+     *
      * @param item
      * @return
      */
     public Item add(Item item) {
-        item.setId(ids++);
         items[size++] = item;
         return item;
     }
 
     /**
      * Метод поиска заявок по id
+     *
      * @param id
      * @return
      */
-    public Item findById(int id) {
+    public Item findById(String id) {
         Item rsl = null;
         for (int i = 0; i < size; i++) {
             Item item = items[i];
-            if (item.getId() == id) {
+            if (item.getId().equals(id)) {
                 rsl = item;
                 break;
             }
@@ -44,6 +71,7 @@ public class Tracker {
 
     /**
      * Метод вывода списка элементов
+     *
      * @return
      */
     public Item[] findAll() {
@@ -52,12 +80,13 @@ public class Tracker {
 
     /**
      * Метод поиска заявки по имени
+     *
      * @param name
      * @return
      */
     public Item[] findByName(String name) {
         int nElem = 0;
-        Item[] rsl = new Item[nElem];
+        Item[] rsl = new Item[size];
         for (int i = 0; i < size; i++) {
             Item item = items[i];
             if (item.getName().equals(name)) {
@@ -68,13 +97,55 @@ public class Tracker {
         return rsl;
     }
 
-    public static void main(String[] args) {
-        Tracker tracker = new Tracker();
-        tracker.add(new Item(1, "Mama"));
-        tracker.add(new Item(2, "Papa"));
-        tracker.add(new Item(2, "Papa"));
-        System.out.println(Arrays.toString(tracker.findAll()));
-        System.out.println(Arrays.toString(tracker.findByName("Papa")));
-
+    /**
+     * Метод замены заявки в хранилище
+     *
+     * @param id   - id заявки
+     * @param item - новая заявка
+     * @return
+     */
+    public boolean replace(String id, Item item) {
+        boolean isReplaced = false;
+        int searchedIndex;
+        for (searchedIndex = 0; searchedIndex < size; searchedIndex++) {
+            if (items[searchedIndex].getId().equals(id)) {
+                item.setId(id);
+                items[searchedIndex] = item;
+                isReplaced = true;
+                break;
+            }
+        }
+        return isReplaced;
     }
+
+    /**
+     * Метод удаления заявки по id
+     * @param id
+     * @return
+     */
+    public boolean delete(String id) {
+        boolean isDeleted = false;
+        int deletedIndex;
+        for (deletedIndex = 0; deletedIndex < size; deletedIndex++) {
+            if (items[deletedIndex].getId().equals(id)) {
+                break;
+            } else if (deletedIndex == size) {
+                break;
+            }
+        }
+        for (int j = deletedIndex; j < size; j++) {
+            items[j] = items[j + 1];
+            size--;
+            isDeleted = true;
+        }
+        return isDeleted;
+    }
+
+    public void remove(String id) {
+        int index = indexOf(id);
+        System.arraycopy(items, index + 1, items, index, size - index - 1);
+    }
+
 }
+
+
