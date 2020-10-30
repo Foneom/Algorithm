@@ -67,9 +67,8 @@ public class TrackerTest {
         Item mama = new Item();
         tracker.add(papa);
         tracker.add(mama);
-        //tracker.delete(mama.getId());
-        tracker.remove(mama.getId());
-        Item[] expected = new Item[]{papa, null};
+        tracker.delete(mama.getId());
+        Item[] expected = new Item[]{papa};
         assertThat(tracker.findAll(), is(expected));
 
     }
