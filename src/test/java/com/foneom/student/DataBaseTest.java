@@ -50,4 +50,22 @@ public class DataBaseTest {
         assertThat(actual1, is(expected1));
     }
 
+    @Test
+    public void whenSort() {
+        DataBase dataBase = new DataBase(10);
+        Student student1 = new Student();
+        Student student2 = new Student();
+        Student student3 = new Student();
+        student1.setSecondName("Боров");
+        student2.setSecondName("Зенович");
+        student3.setSecondName("Аноприенко");
+        dataBase.add(student1);
+        dataBase.add(student2);
+        dataBase.add(student3);
+        dataBase.sort();
+        Student[] expected = new Student[] {student3, student1, student2};
+        Student[] actual = dataBase.print();
+        assertThat(actual, is(expected));
+    }
+
 }
