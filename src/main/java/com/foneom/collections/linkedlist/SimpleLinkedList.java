@@ -26,7 +26,7 @@ public class SimpleLinkedList<T> {
 
    public T get(int index) {
        Objects.checkIndex(index, size);
-       return
+       return null;
    }
 
     public boolean isEmpty() {
