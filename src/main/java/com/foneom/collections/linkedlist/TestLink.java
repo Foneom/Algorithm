@@ -2,97 +2,101 @@ package com.foneom.collections.linkedlist;
 
 import java.util.Iterator;
 
-public class TestLink implements Iterable {
-    /**
-     * Певый элемент
-     */
+public class TestLink {
     private Node head;
-
-    private Node last;
-
-    private int size = 0;
+    private int size;
 
     public void addFirst(int value) {
-      Node newNode = new Node(value);
-      newNode.next = head;
-      head = newNode;
-      size++;
+        Node newNode = new Node(value);//создаем новую ноду с элементом value
+        newNode.next = head;//переопределяем ссылку
+        head = newNode;
+        size++;
     }
-    public void addLast(int value) {
-        Node toAdd = new Node(value);
 
-        Node temp = head;
-        while (temp.next != null) {
-            temp = temp.next;
+    public void addLast(int value) {
+        Node newNode = new Node(value);
+        if (head == null) {
+            head = newNode;
         }
-        temp.next = toAdd;
+        Node current = head;
+        while (current.next != null) {
+            current = current.next;
+        }
+        current.next = newNode;
         size++;
     }
 
     public void print() {
-        Node current = head;
-        System.out.print("[");
+        Node current = head;//идем от начала списка
         int count = 0;
+        System.out.print("[");
         while (current != null) {
-            System.out.print(current.item);
+            System.out.print(current.data);
             current = current.next;
             count++;
-            if (count < size) {
+            if (count > 0 && count < size) {
                 System.out.print(", ");
             }
         }
         System.out.print("]");
     }
 
-    @Override
-    public Iterator iterator() {
+    public void deleteFirst(int val) {
+        Node current = head;
+        while (current.data != val) {
+            current = current.next;
+        }
+        Node tmp = head;
+        head = tmp.next;
+        tmp.next = tmp;
+        size--;
+    }
 
-        return new Iterator() {
-            Node add = head;
-            @Override
-            public boolean hasNext() {
-                return add != null;
-            }
+    public void delete(int val) {
+        Node current = head;
+        while (current.next.data != val) {
 
-            @Override
-            public Object next() {
-                int val = add.item;
-                add = add.next;
-                return val;
-            }
-        };
+        }
+        current.next = current.next.next;
+        size--;
+    }
+
+    public void get(int val) {
+        Node current = head;
+        while (current.data != val) {
+            current = current.next;
+        }
+        System.out.println(System.lineSeparator() + current.data);
     }
 }
 
-class Node {
-    /**
-     * Ссылка на следующий элемент
-     */
-    Node next;
-    /**
-     * Ссылка на предыдущий элемент
-     */
-    Node prev;
-    int item;
 
-    public Node(int item) {
-        this.item = item;
+class Node {
+    Node next;
+    Node prev;
+    int data;
+
+    public Node(int data) {
+        this.data = data;
         next = null;
+        prev = null;
     }
+
 }
 
 class Test {
     public static void main(String[] args) {
         TestLink link = new TestLink();
-        link.addFirst(5);
-        link.addFirst(10);
+        link.addFirst(4);
         link.addFirst(7);
-        link.addLast(18);
-        //link.print();
-        Iterator iterator = link.iterator();
-        while (iterator.hasNext()) {
-            System.out.print(iterator.next() + ", ");
-        }
+        link.addLast(10);
+        link.print();
+        link.get(7);
+        link.deleteFirst(7);
+        link.print();
+        link.delete(10);
+        System.out.println();
+        link.print();
     }
 }
 
