@@ -77,8 +77,6 @@ public class HighArray {
             for (int k = i; k < nElem; k++) {
                 arr[k] = arr[k + 1];
             }
-            nElem--;
-            isDeleted = true;
                 nElem--;
                 isDeleted = true;
         }

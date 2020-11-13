@@ -1,35 +1,21 @@
 package com.foneom.collections.linkedlist;
 
-public class IntLinked {
-    /**
-     * Указатель на первый элемент списка
-     */
+class IntLinked {
     private IntNode head;
-    /**
-     * Указатель на последний элемент списка
-     */
-    private IntNode last;
+    private int size;
 
-    public void addFirst(int element) {
-        IntNode intLinked = new IntNode(); //создаем новую ноду
-        intLinked.data = element;//данные новой ноды
-        if (last == null) { // если список пуст, то указываем ссылки начала и конца на первый элемент
-        head = intLinked;
-        last = intLinked;
-        } else {
-            last.next = intLinked;//иначе старый последний теперь ссылается на новый
-            last = intLinked; //указатель на последний записываем
-        }
-}
-public void printList() {
-        IntNode node = head; // получаем ссылку на первый элемент
-    System.out.print("[");
-    while (node != null) { //пока нода существует
-        System.out.print(node.data + ", ");// печатаем данные в ноде
-        node = node.next; //и переходим к следующей
+    public IntLinked() {
+        head = null;
     }
-    System.out.println("]");
+
+    public void addFirst(int value) {
+        IntNode newNode = new IntNode(value);
+        newNode = head.next;
+        head.next = newNode;
+
+    }
 }
+
 
     public static void main(String[] args) {
         IntLinked intLinked = new IntLinked();
@@ -39,14 +25,13 @@ public void printList() {
     }
 
 class IntNode {
-        /**
-         * Указатель на следующий элемент
-         */
-        IntNode next;
-        /**
-         * Данные
-         */
-        int data;
+    IntNode next;
+    int data;
+
+    public IntNode(int val) {
+        data = val;
     }
+
+
 }
 

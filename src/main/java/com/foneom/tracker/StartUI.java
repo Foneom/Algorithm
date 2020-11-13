@@ -91,21 +91,5 @@ public static void findItemByName(Input input, Tracker tracker) {
                 + "\nSelect: ");
     }
 
-    public static void main(String[] args) {
-        Input input = new Input() {
-            Scanner scanner = new Scanner(System.in);
-            @Override
-            public String askStr(String question) {
-                System.out.println(question);
-                return scanner.nextLine();
-            }
 
-            @Override
-            public int askInt(String question) {
-                return Integer.valueOf(askStr(question));
-            }
-        };
-        Tracker tracker = new Tracker();
-        new StartUI().init(input, tracker);
-    }
 }
