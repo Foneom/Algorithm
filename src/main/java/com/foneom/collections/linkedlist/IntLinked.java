@@ -14,24 +14,24 @@ class IntLinked {
         head.next = newNode;
 
     }
-}
 
 
     public static void main(String[] args) {
         IntLinked intLinked = new IntLinked();
         intLinked.addFirst(3);
         intLinked.addFirst(6);
-        intLinked.printList();
+        // intLinked.printList();
     }
 
-class IntNode {
-    IntNode next;
-    int data;
+    class IntNode {
+        IntNode next;
+        int data;
 
-    public IntNode(int val) {
-        data = val;
+        public IntNode(int val) {
+            data = val;
+        }
+
+
     }
-
-
 }
 
