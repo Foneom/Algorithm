@@ -69,11 +69,9 @@ public class SimpleArrayList<T> implements Iterable<T> {
      * @return
      */
     public T remove(int index) {
-        T value = null;
         int i;
         for (i = 0; i < size; i++) {
             if (i == index) {
-                arr[index] = value;
                 break;
             }
             if (index > i) {
@@ -84,7 +82,7 @@ public class SimpleArrayList<T> implements Iterable<T> {
             arr[j] = arr[j + 1];
         }
         size--;
-        return value;
+        return null;
     }
 
     /**
