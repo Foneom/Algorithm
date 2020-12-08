@@ -5,7 +5,7 @@ import java.security.spec.RSAOtherPrimeInfo;
 /**
  * Класс представляющий все дерево
  */
-public class SimpleTree {
+public class SimpleTree<E extends Comparable<E>> {
 
     private Node root;
 
