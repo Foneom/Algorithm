@@ -7,13 +7,14 @@ import java.util.List;
 public class Analizy {
 
 
-    public static void unavailable(String source, String target) throws IOException {
+    public static void unavailable(String source, String target) {
 
         StringBuilder stringForTime = new StringBuilder();
         List<String> log = new ArrayList<>();
         boolean marker = false;
 
-        try (BufferedReader in = new BufferedReader(new FileReader(source))) {
+        try {
+            BufferedReader in = new BufferedReader(new FileReader(source));
             String line;
             while ((line = in.readLine()) != null) {
                 if (!marker && (line.startsWith("400") || line.startsWith("500"))) {
